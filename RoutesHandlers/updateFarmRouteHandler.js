@@ -1,4 +1,4 @@
-'use srtict';
+'use strict';
 
 async function updateFarmRouteHandler (request, response){
     const id = req.params.id;
