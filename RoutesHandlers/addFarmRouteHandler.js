@@ -1,4 +1,4 @@
-'use srtict';
+'use strict';
 
 async function addFarmRouteHandler(request,response){
     const {
