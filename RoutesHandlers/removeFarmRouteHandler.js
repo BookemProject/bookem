@@ -1,11 +1,11 @@
 
-
+const farm = require('../server');
 async function removeFarmRouteHandler(req,res){
 
 
 const farmID=req.params.id;
 const owner=req.params.owner;
-await farm.deleteOne({_id:farmID},(err,result)=>{
+ farm.deleteOne({_id:farmID},(err,result)=>{
 
     if(err){
 
@@ -31,4 +31,4 @@ await farm.deleteOne({_id:farmID},(err,result)=>{
 
 }
 
-module.exports=removeFarmRouteHandler
+module.exports=removeFarmRouteHandler;
