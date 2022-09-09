@@ -1,4 +1,6 @@
 "use strict";
+
+const farm = require('../server');
 async function homeRouteHandler (request, response){
     
     farm.find({},(err,result)=>{
@@ -8,7 +10,7 @@ async function homeRouteHandler (request, response){
         }
         else
         {   
-            response.send(result);
+           return  response.send(result);
         }
     })
 };

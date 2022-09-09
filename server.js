@@ -8,13 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//Please don't forget to export your class after finishing it so I can require it.
-const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler");
-const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler");
-const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler");
-const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler");
-const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler");
-const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler");
+
+
+
+
+
 
 //Don't edit these lines please :
 mongoose.connect(
@@ -34,18 +32,33 @@ const FarmSchema = new mongoose.Schema({
   pool: Boolean,
   parking: Boolean,
   bedrooms: Number,
-  ownner: String,
+  owner: String,
   available: Boolean,
+  favoriteEmails:Array,
+
 });
 
-// const UserSchema = new mongoose.Schema({
-//   email: String,
-//   fav: [FarmSchema],
-// });
+
 
 const farm = mongoose.model("Farms", FarmSchema);
 
+module.exports = farm;
+
+
+
+//Routes : 
+const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler");
+const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler");
+const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler");
+// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler");
+const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler");
+const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler");
+// const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler");
+
 async function seedData() {
+
+
+
   const firstFarm = new farm({
     farmName: "test",
     imgURL: "test",
@@ -58,6 +71,7 @@ async function seedData() {
     bedrooms: 2,
     ownner: "Bashar",
     available: true,
+    favoriteEmails:["Yazan@gmail.com" , "ehab@gmail.com" ,"AliMOha@gmail.com"]
   });
   const secondFarm = new farm({
     farmName: "test2",
@@ -71,7 +85,9 @@ async function seedData() {
     bedrooms: 2,
     ownner: "Bashar2",
     available: true,
+    favoriteEmails : ["Yazan@gmail.com" , "basharnobeh2001@gmail.com"]
   });
+
  
 
   await firstFarm.save();
@@ -80,32 +96,42 @@ async function seedData() {
 }
 // seedData();
 
+
+
+
 //Just to test if the server is working ..
 app.get("/test", (request, response) => {
   response.send("test request received");
 });
 
+
+// to show the fav farms related to the user : 
+// app.get("/userFav" , userFavRouteHandler);
+
 // home page after logging in (Ehab)
-// app.get("/", homeRouteHandler);
+app.get("/", homeRouteHandler);
 
 // Adding a new farm to the dataBase   (Noor)
 app.post("/addFarm", addFarmRouteHandler);
 
 // removing a farm from data base  (Ibraheem)
-// app.delete("/removeFarm/:id", removeFarmRouteHandler);
+app.delete("/removeFarm/:id", removeFarmRouteHandler);
 
 // the result of the selected city location  (Esraa)
 // app.get("/location", locationRouteHandler);
 
 // the result of the selected city weather  (Morshed)
-// app.get("/weather", weatherRouteHandler);
+app.get("/weather", weatherRouteHandler);
 
 // Updating the farm that's is related to the user (Email) (Yazan)
 app.put("/updateFarm/:id", updateFarmRouteHandler);
 
 // to catch any other not used routes
-app.get("*", (request, response) => {
-  response.send("Error 404 , Page not found .. ");
+app.get("/*", (request, response) => {
+  response.send("Error 404 , Page not found .. test ");
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+
+

@@ -1,5 +1,6 @@
 'use strict';
 
+const farm = require('../server');
 async function addFarmRouteHandler(request,response){
     const {
         farmName,
@@ -11,8 +12,9 @@ async function addFarmRouteHandler(request,response){
         pool,
         parking,
         bedrooms ,
-        ownner ,
+        owner ,
         available,
+        favoriteEmails
     } = request.body;
 
 
@@ -26,8 +28,9 @@ async function addFarmRouteHandler(request,response){
         pool:pool,
         parking:parking,
         bedrooms:bedrooms ,
-        ownner:ownner ,
+        owner:owner ,
         available:available,
+        favoriteEmails:favoriteEmails
     });
 
     farm.find({},(err,result)=>{

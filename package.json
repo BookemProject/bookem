@@ -4,7 +4,8 @@
   "description": "This repo Contains The source Code of Bookem website which is a booking website that provides booking service in Jordan . It provides many feature such as listing Your farm that is available to rent ! and also it gives you weather information for the next 3 days about different cities in Jordan .",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "mongoose": "^6.5.5",
+    "mongoose": "^6.6.0",
     "node": "^18.8.0"
   }
 }
