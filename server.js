@@ -78,7 +78,7 @@ async function seedData() {
   await secondFarm.save();
  
 }
-seedData();
+// seedData();
 
 //Just to test if the server is working ..
 app.get("/test", (request, response) => {
