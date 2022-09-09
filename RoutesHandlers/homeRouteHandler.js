@@ -1,7 +1,7 @@
-'use srtict';
+"use strict";
 async function homeRouteHandler (request, response){
     
-    book.find({},(err,result)=>{
+    farm.find({},(err,result)=>{
         if(err)
         {
             console.log(err);
