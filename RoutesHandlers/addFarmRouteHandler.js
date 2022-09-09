@@ -30,6 +30,18 @@ async function addFarmRouteHandler(request,response){
         available:available,
     });
 
+    farm.find({},(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {  
+            // console.log(result);
+            response.send(result);
+        }
+    })
+
 
 }
 
