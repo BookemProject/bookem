@@ -29,7 +29,7 @@ const FarmSchema = new mongoose.Schema({
     farmName:String,
     imgURL :String,
     location : String,
-    Price :Number,
+    price :Number,
     description:String,
     wifi:Boolean,
     pool:Boolean,
@@ -76,7 +76,7 @@ app.get('/weather', weatherRouteHandler);
 
 
 // Updating the farm that's is related to the user (Email) (Yazan)
-app.put('/updateFarm', updateFarmRouteHandler); 
+app.put('/updateFarm/:id', updateFarmRouteHandler); 
 
 
 // to catch any other not used routes  
