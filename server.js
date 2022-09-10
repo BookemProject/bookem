@@ -47,13 +47,14 @@ module.exports = farm;
 
 
 //Routes : 
-const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler");
-const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler");
-const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler");
-// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler");
-const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler");
-const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler");
-// const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler");
+
+const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler"); // Working 
+const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler"); // Working 
+const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"); // Working 
+// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working 
+const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working 
+const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working 
+const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working 
 
 async function seedData() {
 
@@ -106,7 +107,7 @@ app.get("/test", (request, response) => {
 
 
 // to show the fav farms related to the user : 
-// app.get("/userFav" , userFavRouteHandler);
+app.get("/userFav" , userFavRouteHandler);
 
 // home page after logging in (Ehab)
 app.get("/", homeRouteHandler);
