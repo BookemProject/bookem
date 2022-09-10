@@ -1,18 +1,12 @@
 "use strict";
 
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-
-
-
-
-
 
 //Don't edit these lines please :
 mongoose.connect(
@@ -34,80 +28,77 @@ const FarmSchema = new mongoose.Schema({
   bedrooms: Number,
   owner: String,
   available: Boolean,
-  favoriteEmails:Array,
-
+  favoriteEmails: Array,
 });
-
-
 
 const farm = mongoose.model("Farms", FarmSchema);
 
 module.exports = farm;
 
+//Routes :
 
-
-//Routes : 
-
-const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler"); // Working 
-const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler"); // Working 
-const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"); // Working 
-// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working 
-const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working 
-const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working 
-const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working 
+const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler"); // Working
+const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler"); // Working
+const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"); // Working
+// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working
+const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working
+const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working
+const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
 
 async function seedData() {
-
-
-
   const firstFarm = new farm({
-    farmName: "test",
-    imgURL: "test",
-    location: "test",
-    price: 1000,
-    description: "test",
+    farmName: "OurFarm5",
+    imgURL:
+      "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
+    location: "Madaba",
+    price: 200,
+    description:
+      "With about 270 sq. meters, on three levels, the villa, which is accessed through remote-controlled electric gates, features on the ground floor a large and bright 70 m² Living room comfortably furnished, with a baby grand piano and a flat panel TV (HD, with French channels as well as Netflix).",
     wifi: true,
     pool: true,
     parking: false,
-    bedrooms: 2,
-    ownner: "Bashar",
+    bedrooms: 4,
+    owner: "yazanismial@gmail.com",
     available: true,
-    favoriteEmails:["Yazan@gmail.com" , "ehab@gmail.com" ,"AliMOha@gmail.com"]
+    favoriteEmails: [
+      "yalfarra@outlook.com",
+    
+    ],
   });
   const secondFarm = new farm({
-    farmName: "test2",
-    imgURL: "test2",
-    location: "test2",
-    price: 2000,
-    description: "test2",
+    farmName: "OurFarm6",
+    imgURL:
+      "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
+    location: "Al Mafraq",
+    price: 180,
+    description:
+      "With about 270 sq. meters, on three levels, the villa, which is accessed through remote-controlled electric gates, features on the ground floor a large and bright 70 m² Living room comfortably furnished, with a baby grand piano and a flat panel TV (HD, with French channels as well as Netflix).",
     wifi: true,
     pool: true,
     parking: false,
-    bedrooms: 2,
-    ownner: "Bashar2",
+    bedrooms: 5,
+    owner: "basharnobeh2001@gmail.com",
     available: true,
-    favoriteEmails : ["Yazan@gmail.com" , "basharnobeh2001@gmail.com"]
+    favoriteEmails: [
+     
+      "basharnobeh2001@gmail.com",
+      
+      "yasuobashar@gmail.com",
+    ],
   });
-
- 
 
   await firstFarm.save();
   await secondFarm.save();
- 
 }
 // seedData();
-
-
-
 
 //Just to test if the server is working ..
 app.get("/test", (request, response) => {
   response.send("test request received");
 });
 
-
-// to show the fav farms related to the user : 
-app.get("/userFav" , userFavRouteHandler);
+// to show the fav farms related to the user :
+app.get("/userFav", userFavRouteHandler);
 
 // home page after logging in (Ehab)
 app.get("/", homeRouteHandler);
@@ -133,6 +124,3 @@ app.get("/*", (request, response) => {
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
-
-
-
