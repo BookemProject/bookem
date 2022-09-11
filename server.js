@@ -44,6 +44,7 @@ const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"
 const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working
 const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working
 const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
+const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRouteHandler"); // Working
 
 async function seedData() {
   const firstFarm = new farm({
@@ -102,6 +103,9 @@ app.get("/userFav", userFavRouteHandler);
 
 // home page after logging in (Ehab)
 app.get("/", homeRouteHandler);
+
+
+app.get("/ownedFarms" , userOwnderFarmsRouteHandler);
 
 // Adding a new farm to the dataBase   (Noor)
 app.post("/addFarm", addFarmRouteHandler);
