@@ -9,9 +9,9 @@ async function userFavRouteHandler (request, response){
             console.log(err);
         } else {
             result.map(item =>{
-                if(item.favoriteEmails.includes(wantedEmail)){
+                if(item.owner==wantedEmail){
                     farms.push(item);
-                    
+
                 }
             })
 
@@ -21,7 +21,7 @@ async function userFavRouteHandler (request, response){
         }
     })
  
-    
+
 
 };
 

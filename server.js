@@ -45,10 +45,11 @@ const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // 
 const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working
 const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
 const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRouteHandler"); // Working
+const filterFarmRouteHandler = require("./RoutesHandlers/filterFarmRouteHandler"); // Working
 
 async function seedData() {
   const firstFarm = new farm({
-    farmName: "OurFarm5",
+    farmName: "OurFarm55",
     imgURL:
       "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
     location: "Madaba",
@@ -67,10 +68,10 @@ async function seedData() {
     ],
   });
   const secondFarm = new farm({
-    farmName: "OurFarm6",
+    farmName: "OurFarm66",
     imgURL:
       "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
-    location: "Al Mafraq",
+    location: "Mafraq",
     price: 180,
     description:
       "With about 270 sq. meters, on three levels, the villa, which is accessed through remote-controlled electric gates, features on the ground floor a large and bright 70 m² Living room comfortably furnished, with a baby grand piano and a flat panel TV (HD, with French channels as well as Netflix).",
@@ -100,6 +101,9 @@ app.get("/test", (request, response) => {
 
 // to show the fav farms related to the user :
 app.get("/userFav", userFavRouteHandler);
+
+// to show the filteres farms:
+app.get("/filterFarm", filterFarmRouteHandler);
 
 // home page after logging in (Ehab)
 app.get("/", homeRouteHandler);
