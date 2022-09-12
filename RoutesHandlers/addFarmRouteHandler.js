@@ -14,7 +14,8 @@ async function addFarmRouteHandler(request,response){
         bedrooms ,
         owner ,
         available,
-        favoriteEmails
+        favoriteEmails,
+        likes
     } = request.body;
 
     await farm.create({
@@ -29,7 +30,8 @@ async function addFarmRouteHandler(request,response){
         bedrooms:bedrooms ,
         owner:owner ,
         available:available,
-        favoriteEmails:favoriteEmails
+        favoriteEmails:favoriteEmails,
+        likes:likes
     });
 
     if(request.query.email == 'undefined'){

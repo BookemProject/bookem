@@ -29,6 +29,7 @@ const FarmSchema = new mongoose.Schema({
   owner: String,
   available: Boolean,
   favoriteEmails: Array,
+  likes:Array,
 });
 
 const farm = mongoose.model("Farms", FarmSchema);
@@ -48,8 +49,9 @@ const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRou
 const filterFarmRouteHandler = require("./RoutesHandlers/filterFarmRouteHandler"); // Working
 
 async function seedData() {
+  
   const firstFarm = new farm({
-    farmName: "OurFarm55",
+    farmName: "For Rent",
     imgURL:
       "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
     location: "Madaba",
@@ -66,9 +68,11 @@ async function seedData() {
       "yalfarra@outlook.com",
     
     ],
+    likes:[],
+    
   });
   const secondFarm = new farm({
-    farmName: "OurFarm66",
+    farmName: "For Rent",
     imgURL:
       "https://c4.wallpaperflare.com/wallpaper/859/271/827/the-city-villa-pool-house-in-ibiza-wallpaper-preview.jpg",
     location: "Mafraq",
@@ -87,6 +91,7 @@ async function seedData() {
       
       "yasuobashar@gmail.com",
     ],
+    likes:[],
   });
 
   await firstFarm.save();
