@@ -17,7 +17,6 @@ async function addFarmRouteHandler(request,response){
         favoriteEmails
     } = request.body;
 
-
     await farm.create({
         farmName:farmName ,
         imgURL:imgURL,
@@ -33,19 +32,32 @@ async function addFarmRouteHandler(request,response){
         favoriteEmails:favoriteEmails
     });
 
-    farm.find({},(err,result)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {  
-            // console.log(result);
-            response.send(result);
-        }
-    })
+    if(request.query.email == 'undefined'){
+        farm.find({},(err,result)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                // console.log(result);
+                response.send(result);
+            }
+        })
 
-
+    }else {
+        farm.find({owner:owner},(err,result)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                // console.log(result);
+                response.send(result);
+            }
+        })
+    }
 }
 
 module.exports = addFarmRouteHandler;
