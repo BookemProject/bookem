@@ -1,17 +1,29 @@
 'use strict';
 
-async function locationRouteHandler(request , response){
-    const CityName = request.query.city;
-    const key = "pk.52ffa2b140346333af8917296b40c4cb"
-    const linkLocaiton = `https://us1.locationiq.com/v1/search?key=${key}&q=${CityName}&format=json`
-    axios.get(linkLocaiton).then( result => {
-        
-         response.status(200).send(result.data);
-    }).catch(error => {
-        return response.status(404).send(error)
+const URL_LOCATIONIQ='https://eu1.locationiq.com/v1/search';
+const LOCATION_KEY='pk.e6f569abb6089f922ac76a14ac4bc5e4';
+
+
+
+async function locationRouteHandler(req,res){
+
+
+    const cityname=req.query.city
+
+
+    await axios.get(`${URL_LOCATIONIQ}?key=${LOCATION_KEY}&q=${cityname}&format=json`).then(result=>{
+
+       let locationData=result.data[0];
+
+       res.send(locationData)
+
+    }) 
+    .catch(err=>{
+
+        console.log(err)
     })
 
-} 
 
+}
 
 module.exports = locationRouteHandler;
