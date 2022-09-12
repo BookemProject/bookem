@@ -4,7 +4,7 @@ async function removeFarmRouteHandler(req,res){
 
 
 const farmID=req.params.id;
-const owner=req.params.owner;
+const owner=req.query.owner;
  farm.deleteOne({_id:farmID},(err,result)=>{
 
     if(err){
