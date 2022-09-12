@@ -41,12 +41,13 @@ module.exports = farm;
 const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler"); // Working
 const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler"); // Working
 const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"); // Working
-// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working
+const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working
 const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working
 const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working
 const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
 const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRouteHandler"); // Working
 const filterFarmRouteHandler = require("./RoutesHandlers/filterFarmRouteHandler"); // Working
+const updateLikesRouteHandler = require("./RoutesHandlers/updateLikesRouteHandler")
 
 async function seedData() {
   
@@ -113,6 +114,9 @@ app.get("/filterFarm", filterFarmRouteHandler);
 // home page after logging in (Ehab)
 app.get("/", homeRouteHandler);
 
+// Add email to the likes
+app.put("/updateLikes/:id", updateLikesRouteHandler);
+
 
 app.get("/ownedFarms" , userOwnderFarmsRouteHandler);
 
@@ -123,7 +127,7 @@ app.post("/addFarm", addFarmRouteHandler);
 app.delete("/removeFarm/:id", removeFarmRouteHandler);
 
 // the result of the selected city location  (Esraa)
-// app.get("/location", locationRouteHandler);
+app.get("/map", locationRouteHandler);
 
 // the result of the selected city weather  (Morshed)
 app.get("/weather", weatherRouteHandler);
