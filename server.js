@@ -47,7 +47,8 @@ const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"
 const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
 const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRouteHandler"); // Working
 const filterFarmRouteHandler = require("./RoutesHandlers/filterFarmRouteHandler"); // Working
-const updateLikesRouteHandler = require("./RoutesHandlers/updateLikesRouteHandler")
+const updateLikesRouteHandler = require("./RoutesHandlers/updateLikesRouteHandler");
+const getFavRouteHandler = require("./RoutesHandlers/getfavRouteHandler")
 
 async function seedData() {
   
@@ -126,14 +127,17 @@ app.post("/addFarm", addFarmRouteHandler);
 // removing a farm from data base  (Ibraheem)
 app.delete("/removeFarm/:id", removeFarmRouteHandler);
 
-// the result of the selected city location  (Esraa)
+// the result of the selected city location  
 app.get("/map", locationRouteHandler);
 
-// the result of the selected city weather  (Morshed)
+// the result of the selected city weather 
 app.get("/weather", weatherRouteHandler);
 
 // Updating the farm that's is related to the user (Email) (Yazan)
 app.put("/updateFarm/:id", updateFarmRouteHandler);
+
+// the result of the selected city weather 
+app.get("/getfav", getFavRouteHandler);
 
 // to catch any other not used routes
 app.get("/*", (request, response) => {
