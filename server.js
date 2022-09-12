@@ -40,7 +40,7 @@ module.exports = farm;
 const homeRouteHandler = require("./RoutesHandlers/homeRouteHandler"); // Working
 const addFarmRouteHandler = require("./RoutesHandlers/addFarmRouteHandler"); // Working
 const removeFarmRouteHandler = require("./RoutesHandlers/removeFarmRouteHandler"); // Working
-// const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//  Not Working
+const locationRouteHandler = require("./RoutesHandlers/locationRouteHandler")//   Working
 const weatherRouteHandler = require("./RoutesHandlers/weatherRouteHandler"); // Working
 const updateFarmRouteHandler = require("./RoutesHandlers/updateFarmRouteHandler"); // Working
 const userFavRouteHandler = require("./RoutesHandlers/userFavRouteHandler"); // Working
@@ -110,7 +110,7 @@ app.post("/addFarm", addFarmRouteHandler);
 app.delete("/removeFarm/:id", removeFarmRouteHandler);
 
 // the result of the selected city location  (Esraa)
-// app.get("/location", locationRouteHandler);
+app.get("/map", locationRouteHandler);
 
 // the result of the selected city weather  (Morshed)
 app.get("/weather", weatherRouteHandler);
