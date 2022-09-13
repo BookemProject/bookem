@@ -1,7 +1,7 @@
 'use strict';
 
 const URL_LOCATIONIQ='https://eu1.locationiq.com/v1/search';
-const LOCATION_KEY='pk.e6f569abb6089f922ac76a14ac4bc5e4';
+const LOCATION_KEY=process.env.LOCATIONKEY;
 const  axios =require ('axios');
 
 

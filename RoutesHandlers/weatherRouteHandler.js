@@ -3,7 +3,7 @@ const  axios =require ('axios');
 
 async function weatherRouteHandler(request , response){
 
-    const WEATHER_KEY='f17b33956c554c1b985234920223008'
+    const WEATHER_KEY=process.env.WEATHERKEY
     const URL_WEATHER='https://api.weatherapi.com/v1/forecast.json';
     const CityName = request.query.city;
     const Date = request.query.date;

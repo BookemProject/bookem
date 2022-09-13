@@ -9,8 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 //Don't edit these lines please :
+const MONGOOSELINK=process.env.MONGOOSE;
 mongoose.connect(
-  "mongodb://Team:1234@ac-algan1f-shard-00-00.0jtg6ig.mongodb.net:27017,ac-algan1f-shard-00-01.0jtg6ig.mongodb.net:27017,ac-algan1f-shard-00-02.0jtg6ig.mongodb.net:27017/?ssl=true&replicaSet=atlas-bnb353-shard-0&authSource=admin&retryWrites=true&w=majority",
+  `${MONGOOSELINK}`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
