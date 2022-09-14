@@ -50,7 +50,7 @@ const userOwnderFarmsRouteHandler = require("./RoutesHandlers/userOwnderFarmsRou
 const filterFarmRouteHandler = require("./RoutesHandlers/filterFarmRouteHandler"); // Working
 const updateLikesRouteHandler = require("./RoutesHandlers/updateLikesRouteHandler");
 const getFavRouteHandler = require("./RoutesHandlers/getfavRouteHandler");
-const removeEmailFromFavList = require("./RoutesHandlers/removeFarmRouteHandler");
+const removeEmailFromFavList = require("./RoutesHandlers/removeFavRouteHandler");
 
 async function seedData() {
   
